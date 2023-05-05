@@ -1,12 +1,14 @@
 //does thought id need to be thought text?
 const { ObjectId } = require('mongoose').Types;
-const { User, Thought } = require('../models');
+const  {Thought, User} = require('../models');
 
 module.exports = {
   // Get all thoughts
   async getThoughts(req, res) {
+    console.log('routehit')
     try {
       const thought = await Thought.find();
+      console.log(thought)
       res.json(thought);
     } catch (err) {
       res.status(500).json(err);
@@ -31,7 +33,13 @@ module.exports = {
   async createThought(req, res) {
     try {
       const thought = await Thought.create(req.body);
-      res.json(thought);
+      console.log(thought)
+      const user = await User.findOneAndUpdate(
+        { _id: req.body.userId },
+        { $push: { thoughts: thought._id } },
+        { new: true}
+      )
+      res.json({ message: 'Thought successfully created' });
     } catch (err) {
       console.log(err);
       return res.status(500).json(err);
@@ -86,7 +94,7 @@ module.exports = {
 
       res.json(thought);
     } catch (err) {
-      res.status(500).json(err);
+      res.status(420).json(err);
     }
   },
 

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { faker } = require('@faker-js/faker');
-const { Thought, Reaction, User } = require('../models');
+const { Thought, User } = require('../models');
 
 mongoose.connect('mongodb://localhost/social-media-app', { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set('debug', true);
@@ -15,7 +15,7 @@ const seed = async () => {
 
     const userCount = 10;
     const thoughtCount = 20;
-    const reactionCount = 30;
+    // const reactionCount = 30;
 
     const users = await User.create([...Array(userCount)].map(() => ({
       username: faker.internet.userName(),
@@ -25,17 +25,17 @@ const seed = async () => {
 
     const thoughts = await Thought.create([...Array(thoughtCount)].map(() => ({
       thoughtText: faker.lorem.sentence(),
-      userName: users[Math.floor(Math.random() * userCount)],
+      userName: users[Math.floor(Math.random() * userCount)].username,
     })));
 
-    const reactions = await Reaction.create([...Array(reactionCount)].map(() => ({
-      userName: faker.lorem.word(),
-      reactionBody: faker.lorem.sentence()
-    })));
+    // const reactions = await Reaction.create([...Array(reactionCount)].map(() => ({
+    //   userName: faker.lorem.word(),
+    //   reactionBody: faker.lorem.sentence()
+    // })));
 
     console.log(`${users.length} users created`);
     console.log(`${thoughts.length} thoughts created`);
-    console.log(`${reactions.length} reactions created`);
+    // console.log(`${reactions.length} reactions created`);
 
     process.exit();
   } catch (err) {

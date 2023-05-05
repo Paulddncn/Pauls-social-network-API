@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Thought = require('./models/thought');
-const Reaction = require('./models/reaction');
+// const Reaction = require('./models/reaction');
 const User = require('./models/user');
 
 mongoose.connect('mongodb://localhost/social-media-app', { useNewUrlParser: true, useUnifiedTopology: true });

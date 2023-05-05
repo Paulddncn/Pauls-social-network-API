@@ -1,5 +1,5 @@
 const { Schema, Types, model } = require('mongoose');
-
+const reactionSchema = require('./Reaction');
 const thoughtSchema = new Schema(
   {
     thoughtText: {
@@ -11,18 +11,16 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      get: function() {
-        return this.createdAt.toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})
-      }
+      get: (createdAtVal) => dateFormat(createdAtVal)
     },
     userName: {
       type: String,
       required: true
     },
-    reactions: {
+    reactions: [
   //Array of nested documents created with the reactionSchema
-    type: Schema.Types.ObjectId, ref: 'reactionSchema' 
-    },
+    reactionSchema
+    ],
   },
     {
     toJSON: {

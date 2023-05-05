@@ -1,0 +1,1 @@
+{"version":"1.0.1","name":"mongoose-back-end-project","dependencies":{"express":{"version":"4.18.2"},"faker":{"version":"6.6.6"},"mongoose":{"version":"7.1.0"}}}

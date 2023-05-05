@@ -1,0 +1,22 @@
+{
+  "name": "mongoose-back-end-project",
+  "version": "1.0.1",
+  "description": "Mongoose back-end project - Develop",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index",
+    "seed": "node utils/seed",
+    "heroku-postbuild": "node utils/seed.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "faker": "^6.6.6",
+    "mongoose": "^7.0.2"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "nodemon": "^2.0.9"
+  }
+}

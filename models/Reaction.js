@@ -21,7 +21,7 @@ const reactionSchema = new Schema(
       type: Date,
       default: () => new Date(+new Date() + 84 * 24 * 60 * 60 * 1000),
     }
-    
+
   },
   {
     toJSON: {
@@ -30,6 +30,5 @@ const reactionSchema = new Schema(
     id: false,
   }
 );
-// const Reaction = model('Reaction', reactionSchema);
 
 module.exports = reactionSchema;

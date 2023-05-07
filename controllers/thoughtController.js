@@ -1,6 +1,5 @@
-//does thought id need to be thought text?
 const { ObjectId } = require('mongoose').Types;
-const  {Thought, User} = require('../models');
+const { Thought, User } = require('../models');
 
 module.exports = {
   // Get all thoughts
@@ -37,14 +36,14 @@ module.exports = {
       const user = await User.findOneAndUpdate(
         { _id: req.body.userId },
         { $push: { thoughts: thought._id } },
-        { new: true}
+        { new: true }
       )
       res.json({ message: 'Thought successfully created' });
     } catch (err) {
       console.log(err);
       return res.status(500).json(err);
     }
-    //push the created thought's _id to the associated user's thoughts array field
+
   },
   // Delete a thought
   async deleteThought(req, res) {
@@ -55,7 +54,7 @@ module.exports = {
         res.status(404).json({ message: 'No thought with that ID' });
       }
 
-    //   await User.deleteMany({ _id: { $in: thought.users } });
+      //   await User.deleteMany({ _id: { $in: thought.users } });
       res.json({ message: 'Thought and users deleted!' });
     } catch (err) {
       res.status(500).json(err);

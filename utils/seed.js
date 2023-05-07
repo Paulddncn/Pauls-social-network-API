@@ -15,7 +15,6 @@ const seed = async () => {
 
     const userCount = 10;
     const thoughtCount = 20;
-    // const reactionCount = 30;
 
     const users = await User.create([...Array(userCount)].map(() => ({
       username: faker.internet.userName(),
@@ -28,14 +27,8 @@ const seed = async () => {
       userName: users[Math.floor(Math.random() * userCount)].username,
     })));
 
-    // const reactions = await Reaction.create([...Array(reactionCount)].map(() => ({
-    //   userName: faker.lorem.word(),
-    //   reactionBody: faker.lorem.sentence()
-    // })));
-
     console.log(`${users.length} users created`);
     console.log(`${thoughts.length} thoughts created`);
-    // console.log(`${reactions.length} reactions created`);
 
     process.exit();
   } catch (err) {

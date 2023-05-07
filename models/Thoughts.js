@@ -18,11 +18,10 @@ const thoughtSchema = new Schema(
       required: true
     },
     reactions: [
-  //Array of nested documents created with the reactionSchema
-    reactionSchema
+      reactionSchema
     ],
   },
-    {
+  {
     toJSON: {
       getters: true,
     },
